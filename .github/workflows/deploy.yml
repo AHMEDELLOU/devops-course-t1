@@ -8,17 +8,17 @@ on:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, Linux, X64]
-    timeout-minutes: 5
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Test CI/CD
+      - name: Test Node.js application
         run: |
-          echo "CI/CD Pipeline is working!"
-          echo "Running on Ubuntu!"
-          whoami
-          docker --version
-          echo "Pipeline test completed!"
+          node --check server.js
+
+      - name: Deploy to Dokku
+        run: |
+          git remote add dokku dokku@127.0.0.1:devops-app
+          GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new -i /home/ahmed/.ssh/id_rsa" git push dokku HEAD:master --force

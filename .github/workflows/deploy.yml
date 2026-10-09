@@ -21,5 +21,5 @@ jobs:
 
       - name: Deploy to Dokku
         run: |
-          git remote add dokku dokku@127.0.0.1:devops-app
+          git remote set-url dokku dokku@127.0.0.1:devops-app
           GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new -i /home/ahmed/.ssh/id_rsa" git push dokku HEAD:master

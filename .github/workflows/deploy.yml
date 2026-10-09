@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Test Node.js application
         run: node --check server.js
@@ -20,4 +22,4 @@ jobs:
       - name: Deploy to Dokku
         run: |
           git remote add dokku dokku@127.0.0.1:devops-app
-          GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new -i /home/ahmed/.ssh/id_rsa" git push dokku HEAD:master --force
+          GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new -i /home/ahmed/.ssh/id_rsa" git push dokku HEAD:master

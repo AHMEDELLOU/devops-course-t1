@@ -20,4 +20,5 @@ jobs:
           echo "CI/CD Pipeline is working!"
           echo "Running on Ubuntu!"
           whoami
-          timeout 15s dokku version
+          docker --version
+          echo "Pipeline test completed!"

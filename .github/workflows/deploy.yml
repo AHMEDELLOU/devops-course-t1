@@ -15,8 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Test Node.js application
-        run: |
-          node --check server.js
+        run: node --check server.js
 
       - name: Deploy to Dokku
         run: |

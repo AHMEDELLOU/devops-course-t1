@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: [self-hosted, Linux, X64]
+    timeout-minutes: 5
 
     steps:
       - name: Checkout repository
@@ -17,4 +18,6 @@ jobs:
       - name: Test CI/CD
         run: |
           echo "CI/CD Pipeline is working!"
-          dokku version
+          echo "Running on Ubuntu!"
+          whoami
+          timeout 15s dokku version
